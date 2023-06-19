@@ -36,7 +36,7 @@ function Invoke-CICloudAPIRequest(){
         [Parameter(Mandatory=$True)]
             [ValidateSet("Get","Put","Post","Delete","Patch")] [string] $Method,
         [Parameter(Mandatory=$True)]
-            [ValidateSet(34,33,32,31,30)] [int] $APIVersion,
+            [ValidateSet(34,33,32,31,30)] [int] $APIVersion,                #will need updates also change format to one with decimal numbers 35.2 for example change type from int to [decimal]
         [Parameter(Mandatory=$False)]
             [ValidateSet("Legacy","CloudAPI")] [string] $APIType = "CloudAPI",
         [Parameter(Mandatory=$False)]
@@ -55,17 +55,17 @@ function Invoke-CICloudAPIRequest(){
         Break
     }
 
-    # Construct the headers for the API call
+    # Construct the headers for the API call            #token type was changed even for connect-CIserver, need to update for new versions of director
     $APIHeaders = @{
             'x-vcloud-authorization' = $global:DefaultCIServers.SessionId
     }
-    # Add the API Version Header (CloudAPI did not exist before API version 30)
+    # Add the API Version Header (CloudAPI did not exist before API version 30)                 #maybe need to change logic because no longer aplies for newer versions so maybe add another logic for newer type api 
     if($APIType -eq "CloudAPI"){
         if($APIVersion -lt 30){
             throw "The provided API Version is not supported by this cmdlet. Please check the compatibility and try again"
         } else {
             $APIHeaders.Add("Content-Type","application/json")
-            $APIHeaders.Add("Accept","application/json;version=$APIVersion.0")
+            $APIHeaders.Add("Accept","application/json;version=$APIVersion.0")    #will implement .0 to the variable itself as a decimal number
         }
     } else {
         # Legacy API generally uses XML however only can use a JSON header
