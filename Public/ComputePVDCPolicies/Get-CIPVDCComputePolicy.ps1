@@ -24,8 +24,8 @@ function Get-CIPVDCComputePolicy(){
 
 	.NOTES
     AUTHOR: Adrian Begg
-	LASTEDIT: 2019-12-10
-	VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     [CmdletBinding(DefaultParameterSetName="Default")]
     Param(
@@ -76,7 +76,7 @@ function Get-CIPVDCComputePolicy(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/pvdcComputePolicies/$($Results.id)/vms"
             Method = "Get"
-            APIVersion = 33
+            APIVersion = 37.2
         }
         $Response = (Invoke-CICloudAPIRequest @RequestParameters).JSONData
         $Results | Add-Member Note* VMAssociations $Response.values

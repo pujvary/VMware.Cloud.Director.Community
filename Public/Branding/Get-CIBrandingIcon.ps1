@@ -33,7 +33,7 @@ function Get-CIBrandingIcon(){
         Method = "Get"
         Headers = @{
             "x-vcloud-authorization" = $global:DefaultCIServers.SessionId;
-            "Accept" = 'image/png;version=33.0, image/x-icon;version=33.0'
+            "Accept" = 'image/png;version=37.2, image/x-icon;version=37.2'
         }
         OutFile = $OutputFileName
         SkipCertificateCheck = $true

@@ -36,7 +36,7 @@ function Publish-CIBrandingIcon(){
         Method = "Put"
         Headers = @{
             "x-vcloud-authorization" = $global:DefaultCIServers.SessionId;
-            "Accept" = '*/*;version=33.0'
+            "Accept" = '*/*;version=37.2'
         }
         ContentType = "image/png"
         SkipCertificateCheck = $true

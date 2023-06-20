@@ -119,8 +119,8 @@ function Set-CISystemSettings(){
 
   .NOTES
     AUTHOR: Adrian Begg
-    LASTEDIT: 2020-04-08
-    VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
   Param(
     [Parameter(Mandatory=$False)]
@@ -166,7 +166,7 @@ function Set-CISystemSettings(){
   [Hashtable] $RequestParameters = @{
     URI = "$($global:DefaultCIServers.ServiceUri)admin/extension/settings/general"
     Method = "Get"
-    APIVersion = 33
+    APIVersion = 37.2
     APIType = "Legacy"
     LegacyAPIDataType = "JSON"
   }

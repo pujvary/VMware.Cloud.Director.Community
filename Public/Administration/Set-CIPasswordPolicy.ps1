@@ -30,8 +30,8 @@ function Set-CIPasswordPolicy(){
 
     .NOTES
     AUTHOR: Adrian Begg
-    LASTEDIT: 2020-01-14
-    VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     Param(
         [Parameter(Mandatory=$True, ParameterSetName = "System")]
@@ -52,7 +52,7 @@ function Set-CIPasswordPolicy(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.ServiceUri)admin/extension/settings/passwordPolicy"
             Method = "Get"
-            APIVersion = 33
+            APIVersion = 37.2
             APIType = "Legacy"
             LegacyAPIDataType = "JSON"
         }

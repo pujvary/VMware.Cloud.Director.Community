@@ -65,7 +65,7 @@ function Get-CIRightsCategory(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/rightsCategories"
         Method = "Get"
-        APIVersion = 33
+        APIVersion = 37.2
         Data = $APIParameters
     }
     # Make the API call to retrieve all of the Rights

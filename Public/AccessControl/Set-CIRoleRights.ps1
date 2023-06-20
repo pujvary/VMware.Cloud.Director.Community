@@ -16,8 +16,8 @@ function Set-CIRoleRights(){
     A collection of Rights References e.g. [@{"name"="Organization vDC Gateway: Configure DNS","id"="urn:vcloud:right:d85b0e92-b9e8-31af-9b19-23cd00cae7e7"}]
 
     AUTHOR: Adrian Begg
-	LASTEDIT: 2020-06-01
-	VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     [CmdletBinding(DefaultParameterSetName="Id")]
     Param(
@@ -49,7 +49,7 @@ function Set-CIRoleRights(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/roles/$($Role.id)/rights"
             Method = "Put"
-            APIVersion = 33
+            APIVersion = 37.2
             Data = (ConvertTo-Json $Payload -Depth 100)
         }
         # Make the API call and return the result

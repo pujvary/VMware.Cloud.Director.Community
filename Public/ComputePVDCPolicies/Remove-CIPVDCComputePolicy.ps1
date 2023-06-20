@@ -15,8 +15,8 @@ function Remove-CIPVDCComputePolicy(){
 
 	.NOTES
     AUTHOR: Adrian Begg
-	LASTEDIT: 2019-12-11
-	VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     Param(
         [Parameter(Mandatory=$True)]
@@ -35,7 +35,7 @@ function Remove-CIPVDCComputePolicy(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/pvdcComputePolicies/$($ComputePVDCPolicy.id)"
         Method = "Delete"
-        APIVersion = 33
+        APIVersion = 37.2
     }
     # Make the API call and return the result
     (Invoke-CICloudAPIRequest @RequestParameters).JSONData | Out-Null

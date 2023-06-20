@@ -21,8 +21,8 @@ function Get-CIProviderVC(){
 
 	.NOTES
     AUTHOR: Adrian Begg
-	LASTEDIT: 2019-12-17
-	VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     Param(
         [Parameter(Mandatory=$False, ParameterSetName = "ByName")]
@@ -36,7 +36,7 @@ function Get-CIProviderVC(){
     [Hashtable] $OrgIdRequestParameters = @{
         URI = $OrgHref
         Method = "Get"
-        APIVersion = 33
+        APIVersion = 37.2
         APIType = "Legacy"
     }
     [xml] $OrgIdXML = (Invoke-CICloudAPIRequest @OrgIdRequestParameters).RawData
@@ -55,7 +55,7 @@ function Get-CIProviderVC(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.ServiceUri)query?$filter=(id==$OrgId)"
         Method = "Get"
-        APIVersion = 33
+        APIVersion = 37.2
         APIType = "Legacy"
         Data = $APIParameters
     }
@@ -77,7 +77,7 @@ function Get-CIProviderVC(){
         [Hashtable] $DRSClusterParameters = @{
             URI = $DRSClusterEndpoint
             Method = "Get"
-            APIVersion = 33
+            APIVersion = 37.2
         }
         $DRSClusters = ((Invoke-CICloudAPIRequest @DRSClusterParameters).JSONData).values
         # Now iterate over the clusters and retrieve
@@ -85,7 +85,7 @@ function Get-CIProviderVC(){
             [Hashtable] $HardwareVersionParams = @{
                 URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/virtualCenters/$($Cluster.vcId)/resourcePools/$($Cluster.moref)/hwv"
                 Method = "Get"
-                APIVersion = 33
+                APIVersion = 37.2
             }
             # Return the Hardware Versions
             $SupportedHardwareVersions = ((Invoke-CICloudAPIRequest @HardwareVersionParams).JSONData).versions
@@ -102,7 +102,7 @@ function Get-CIProviderVC(){
             [Hashtable] $StorageProfileParams = @{
                 URI = $StorageProfileEndpoint
                 Method = "Get"
-                APIVersion = 33
+                APIVersion = 37.2
                 Data = $StorageProfileArgs
             }
             $EligbleStorageProfiles = ((Invoke-CICloudAPIRequest @StorageProfileParams).JSONData).values
@@ -117,7 +117,7 @@ function Get-CIProviderVC(){
             [Hashtable] $ResourcePoolParams = @{
                 URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/virtualCenters/$($Cluster.vcId)/resourcePools/browse/$($Cluster.moref)"
                 Method = "Get"
-                APIVersion = 33
+                APIVersion = 37.2
                 Data = $ResourcePoolArgs
             }
             $ResourcePools = ((Invoke-CICloudAPIRequest @ResourcePoolParams).JSONData).values

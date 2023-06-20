@@ -27,8 +27,8 @@ function Import-CIProvicerVCVM(){
 
 	.NOTES
     AUTHOR: Adrian Begg
-	LASTEDIT: 2019-12-20
-	VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
 
     Param(
@@ -67,7 +67,7 @@ function Import-CIProvicerVCVM(){
     [Hashtable] $VIVMRequestParameters = @{
         URI = "$($ProviderVC.href)/vmsList"
         Method = "Get"
-        APIVersion = 33
+        APIVersion = 37.2
         APIType = "Legacy"
     }
     [xml] $VIVMXML = ((Invoke-CICloudAPIRequest @VIVMRequestParameters).RawData)
@@ -109,7 +109,7 @@ function Import-CIProvicerVCVM(){
     [Hashtable] $ImportRequestParameters = @{
         URI = $ImportURI
         Method = "Post"
-        APIVersion = 33
+        APIVersion = 37.2
         APIType = "Legacy"
         CustomContentType = $ContentType
         Data = $xmlPayload

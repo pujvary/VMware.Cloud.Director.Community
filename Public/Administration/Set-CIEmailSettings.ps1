@@ -29,8 +29,8 @@ function Set-CIEmailSettings(){
 
     .NOTES
     AUTHOR: Adrian Begg
-    LASTEDIT: 2020-01-14
-    VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     Param(
         [Parameter(Mandatory=$True, ParameterSetName = "System")]
@@ -57,7 +57,7 @@ function Set-CIEmailSettings(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.ServiceUri)admin/extension/settings/email"
             Method = "Get"
-            APIVersion = 33
+            APIVersion = 37.2
             APIType = "Legacy"
             LegacyAPIDataType = "JSON"
         }

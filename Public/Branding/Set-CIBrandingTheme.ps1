@@ -48,7 +48,7 @@ function Set-CIBrandingTheme(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/branding/themes/$ThemeName/contents"
         Method = "Post"
-        APIVersion = 33
+        APIVersion = 37.2
         Data = ($Data | ConvertTo-Json)
     }
     $Response = (Invoke-CICloudAPIRequest @RequestParameters)

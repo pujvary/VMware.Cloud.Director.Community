@@ -17,7 +17,7 @@ function Get-CIRolev2(){
     Returns all of the Cloud Director Roles
 
     .EXAMPLE
-    Get-CIRolev2 -Name "System Adminsitrator"
+    Get-CIRolev2 -Name "System Administrator"
     Returns the Cloud Director role with the name "System Administrator"
 
     .EXAMPLE
@@ -29,8 +29,8 @@ function Get-CIRolev2(){
     Returns the Cloud Director role with the name "System Administrator" including all rights.
 
     AUTHOR: Adrian Begg
-	LASTEDIT: 2020-06-01
-	VERSION: 1.0
+	LASTEDIT: 2023-06-20
+	VERSION: 1.1
     #>
     [CmdletBinding(DefaultParameterSetName="Default")]
     Param(
@@ -54,7 +54,7 @@ function Get-CIRolev2(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/roles"
         Method = "Get"
-        APIVersion = 34
+        APIVersion = 37.2
         Data = (ConvertTo-Json $APIParameters -Depth 100)
     }
     if($PSBoundParameters.ContainsKey('Id')){
@@ -100,7 +100,7 @@ function Get-CIRolev2(){
                 [Hashtable] $RightRequestParameters = @{
                     URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/roles/$($objRoles.id)/rights"
                     Method = "Get"
-                    APIVersion = 34
+                    APIVersion = 37.2
                     Data = $RightsAPIParameters
                 }
                 # Make the API call to retrieve all of the Rights
