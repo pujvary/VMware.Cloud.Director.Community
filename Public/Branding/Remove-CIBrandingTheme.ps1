@@ -36,7 +36,7 @@
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/branding/themes/$ThemeName"
         Method = "Delete"
-        APIVersion = 33
+        APIVersion = 37.2
         Data = ($Data | ConvertTo-Json)
     }
 

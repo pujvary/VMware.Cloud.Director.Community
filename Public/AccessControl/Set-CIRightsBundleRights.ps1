@@ -21,8 +21,8 @@ function Set-CIRightsBundleRights(){
     
 	.NOTES
     AUTHOR: Adrian Begg
-	LASTEDIT: 2020-05-13
-	VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     [CmdletBinding(DefaultParameterSetName="Id")]
     Param(
@@ -60,7 +60,7 @@ function Set-CIRightsBundleRights(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/rightsBundles/$($RightsBundle.id)/rights"
         Method = "Put"
-        APIVersion = 33
+        APIVersion = 37.2
         Data = (ConvertTo-Json $Payload -Depth 100)
     }
     # Make the API call and return the result

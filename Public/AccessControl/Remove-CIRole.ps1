@@ -21,8 +21,8 @@ function Remove-CIRole(){
     Removes the Cloud Director role with the Id "urn:vcloud:role:d19e98ed-ff6d-4b68-9179-e3822efb3981"
 
     AUTHOR: Adrian Begg
-	LASTEDIT: 2020-06-01
-	VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     [CmdletBinding(DefaultParameterSetName="ById")]
     Param(
@@ -47,7 +47,7 @@ function Remove-CIRole(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/roles/$($Role.id)"
             Method = "Delete"
-            APIVersion = 34
+            APIVersion = 37.2
             Data = (ConvertTo-Json $APIParameters -Depth 100)
         }
         try{

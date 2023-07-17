@@ -12,14 +12,14 @@ function Get-CISite(){
 
 	.NOTES
     AUTHOR: Adrian Begg
-	LASTEDIT: 2020-01-08
-	VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     # Next we need to retireve the Site Name for the local site
     [Hashtable] $ImportRequestParameters = @{
         URI = "$($global:DefaultCIServers.ServiceUri)site"
         Method = "Get"
-        APIVersion = 33
+        APIVersion = 37.2
         APIType = "Legacy"
     }
     [xml] $LocalSiteXML = (Invoke-CICloudAPIRequest @ImportRequestParameters).RawData

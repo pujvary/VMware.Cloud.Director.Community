@@ -32,8 +32,8 @@ function New-CIRightsBundle(){
 
 	.NOTES
     AUTHOR: Adrian Begg
-	LASTEDIT: 2020-05-13
-	VERSION: 1.0
+	LASTEDIT: 2023-06-20
+	VERSION: 1.1
     #>
     Param(
         [Parameter(Mandatory=$True)]
@@ -60,7 +60,7 @@ function New-CIRightsBundle(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/rightsBundles"
         Method = "Post"
-        APIVersion = 34
+        PIVersion = 37.2
         Data = (ConvertTo-Json $Payload -Depth 100)
     }
     # Make the API call and return the result
@@ -77,7 +77,7 @@ function New-CIRightsBundle(){
         [Hashtable] $PublishAllRequestParameters = @{
             URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/rightsBundles/$($Response.id)/tenants/publishAll"
             Method = "Post"
-            APIVersion = 34
+            APIVersion = 37.2
         }
         $PublishAllResponse = (Invoke-CICloudAPIRequest @PublishAllRequestParameters).JSONData
     }

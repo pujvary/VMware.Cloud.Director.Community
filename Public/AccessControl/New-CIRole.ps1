@@ -24,8 +24,8 @@ function New-CIRole(){
     Creates a new Role with the Name "Test Role" and the description "A Role for Testing with no rights" with no rights assigned.
 
     AUTHOR: Adrian Begg
-	LASTEDIT: 2020-06-01
-	VERSION: 1.0
+	LASTEDIT: 2023-06-20
+	VERSION: 1.1
     #>
     Param(
         [Parameter(Mandatory=$True)]
@@ -54,7 +54,7 @@ function New-CIRole(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/roles"
             Method = "Post"
-            APIVersion = 34
+            APIVersion = 37.2
             Data = (ConvertTo-Json $Payload -Depth 100)
         }
         # Make the API call and return the result

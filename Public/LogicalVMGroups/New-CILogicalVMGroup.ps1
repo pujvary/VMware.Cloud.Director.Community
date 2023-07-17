@@ -24,8 +24,8 @@ function New-CILogicalVMGroup(){
 
 	.NOTES
     AUTHOR: Adrian Begg
-	LASTEDIT: 2019-12-10
-	VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     Param(
         [Parameter(Mandatory=$True)]
@@ -58,7 +58,7 @@ function New-CILogicalVMGroup(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/logicalVmGroups"
         Method = "Post"
-        APIVersion = 33
+        APIVersion = 37.2
         Data = (ConvertTo-JSON $Data -Depth 100)
     }
     # Make the API call and return the result

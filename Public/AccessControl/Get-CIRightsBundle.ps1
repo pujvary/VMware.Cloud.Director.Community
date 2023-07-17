@@ -27,7 +27,7 @@ function Get-CIRightsBundle(){
 	.NOTES
     AUTHOR: Adrian Begg
 	LASTEDIT: 2020-05-13
-	VERSION: 1.0
+	VERSION: 1.1
     #>
     [CmdletBinding(DefaultParameterSetName="Default")]
     Param(
@@ -50,7 +50,7 @@ function Get-CIRightsBundle(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/rightsBundles"
         Method = "Get"
-        APIVersion = 34
+        APIVersion = 37.2
         Data = $APIParameters
     }
     # Next we need to determine if we need to filter the results at all - to prevent multiple API calls process subset
@@ -78,6 +78,10 @@ function Get-CIRightsBundle(){
                 }
             }
         }
+    } else {
+        # Added this to make command work without any parameters, now returns all rights bundles instead of nothing
+        $Response = (Invoke-CICloudAPIRequest @RequestParameters).JSONData
+        $colRightsBundles = $Response.values
     }
 
     # Finally check if we should include the Rights in the response
@@ -93,7 +97,7 @@ function Get-CIRightsBundle(){
                 [Hashtable] $RightRequestParameters = @{
                     URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/rightsBundles/$($objRightBundle.id)/rights"
                     Method = "Get"
-                    APIVersion = 34
+                    APIVersion = 37.2
                     Data = $RightsAPIParameters
                 }
                 # Make the API call to retrieve all of the Rights

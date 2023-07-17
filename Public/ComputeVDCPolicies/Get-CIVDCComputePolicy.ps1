@@ -41,8 +41,8 @@ function Get-CIVDCComputePolicy(){
 
 	.NOTES
     AUTHOR: Adrian Begg
-	LASTEDIT: 2019-12-11
-	VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     [CmdletBinding(DefaultParameterSetName="Default")]
     Param(
@@ -89,7 +89,7 @@ function Get-CIVDCComputePolicy(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/vdcComputePolicies"
         Method = "Get"
-        APIVersion = 33
+        APIVersion = 37.2
         Data = $APIParameters
     }
     # Make the API call and return the result
@@ -109,7 +109,7 @@ function Get-CIVDCComputePolicy(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/vdcComputePolicies/$($Results.id)/vms"
             Method = "Get"
-            APIVersion = 33
+            APIVersion = 37.2
         }
         $Response = (Invoke-CICloudAPIRequest @RequestParameters).JSONData
         $Results | Add-Member Note* VMAssociations $Response.values
@@ -119,7 +119,7 @@ function Get-CIVDCComputePolicy(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/vdcComputePolicies/$($Results.id)/vdcs"
             Method = "Get"
-            APIVersion = 33
+            APIVersion = 37.2
         }
         $Response = (Invoke-CICloudAPIRequest @RequestParameters).JSONData
         $Results | Add-Member Note* VDCAssociations $Response

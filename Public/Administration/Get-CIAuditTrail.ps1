@@ -24,7 +24,7 @@ function Get-CIAuditTrail(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/auditTrail"
         Method = "Get"
-        APIVersion = 33
+        APIVersion = 37.2
         Data = $APIParameters
     }
     # Create a Hashtable for FIQL filters

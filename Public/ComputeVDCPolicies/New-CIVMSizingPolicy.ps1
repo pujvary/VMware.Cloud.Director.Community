@@ -55,8 +55,8 @@ function New-CIVMSizingPolicy(){
 
 	.NOTES
     AUTHOR: Adrian Begg
-	LASTEDIT: 2020-01-21
-	VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     Param(
         [Parameter(Mandatory=$True)]
@@ -137,7 +137,7 @@ function New-CIVMSizingPolicy(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/vdcComputePolicies"
         Method = "Post"
-        APIVersion = 33
+        APIVersion = 37.2
         Data = (ConvertTo-JSON $VMPlacementPolicy -Depth 100)
     }
     $Response = (Invoke-CICloudAPIRequest @RequestParameters).JSONData

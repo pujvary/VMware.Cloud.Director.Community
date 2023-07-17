@@ -30,8 +30,8 @@ function Get-CIRights(){
 
 	.NOTES
     AUTHOR: Adrian Begg
-	LASTEDIT: 2020-01-08
-	VERSION: 1.0
+	LASTEDIT: 2023-06-20
+	VERSION: 1.1
     #>
 
     [CmdletBinding(DefaultParameterSetName="Default")]
@@ -53,10 +53,10 @@ function Get-CIRights(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/rights"
         Method = "Get"
-        APIVersion = 33
+        APIVersion = "37.2"
         Data = $APIParameters
     }
-    # Create a Hashtable for FIQL filters
+    # Create a Hashtable for FIQL filters~
     [Hashtable] $Filters = @{}
     # If Name is provided add to the FIQL filter
     if($PSBoundParameters.ContainsKey("Name")){

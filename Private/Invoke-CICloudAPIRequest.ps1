@@ -27,8 +27,8 @@ function Invoke-CICloudAPIRequest(){
     There is a limitation for PowershellCore that at the cmdlet can only be used with the "UseSystemProxy" policy on Windows netsh winhttp show proxy settings; this will be changed in future
 
     AUTHOR: Adrian Begg
-	LASTEDIT: 2019-12-10
-	VERSION: 1.0
+	LASTEDIT: 2023-06-20
+	VERSION: 1.1
     #>
     Param(
         [Parameter(Mandatory=$True)]
@@ -36,7 +36,7 @@ function Invoke-CICloudAPIRequest(){
         [Parameter(Mandatory=$True)]
             [ValidateSet("Get","Put","Post","Delete","Patch")] [string] $Method,
         [Parameter(Mandatory=$True)]
-            [ValidateSet(34,33,32,31,30)] [int] $APIVersion,
+            [ValidateSet(37.2,37.1,37.0,36.3,36.2,36.1,36.0,35.2,35.0,34.0,33.0,32.0,31.0,30.0)] [decimal] $APIVersion,                #will need updates also change format to one with decimal numbers 35.2 for example change type from int to [decimal]
         [Parameter(Mandatory=$False)]
             [ValidateSet("Legacy","CloudAPI")] [string] $APIType = "CloudAPI",
         [Parameter(Mandatory=$False)]
@@ -54,27 +54,33 @@ function Invoke-CICloudAPIRequest(){
     if(!(Test-CIServerConnection)){
         Break
     }
-
-    # Construct the headers for the API call
+     
+    # Construct the headers for the API call  
     $APIHeaders = @{
-            'x-vcloud-authorization' = $global:DefaultCIServers.SessionId
+        'x-vcloud-authorization' = $global:DefaultCIServers.SessionId
     }
+
+    # Converting decimal number for APIVersion to string 
+    $APIVersion_String = "{0:n1}" -f $APIVersion
+
     # Add the API Version Header (CloudAPI did not exist before API version 30)
+  
     if($APIType -eq "CloudAPI"){
-        if($APIVersion -lt 30){
+        if($APIVersion -lt 30.0){
             throw "The provided API Version is not supported by this cmdlet. Please check the compatibility and try again"
         } else {
             $APIHeaders.Add("Content-Type","application/json")
-            $APIHeaders.Add("Accept","application/json;version=$APIVersion.0")
+            $APIHeaders.Add("Accept","application/json;version=$APIVersion_String")
         }
     } else {
         # Legacy API generally uses XML however only can use a JSON header
+        
         if($LegacyAPIDataType -eq "XML"){
             $APIHeaders.Add("Content-Type","application/*+xml")
-            $APIHeaders.Add("Accept","application/*+xml;version=$APIVersion.0")
+            $APIHeaders.Add("Accept","application/*+xml;version=$APIVersion_String")
         } elseif($LegacyAPIDataType -eq "JSON"){
             $APIHeaders.Add("Content-Type","application/*+json")
-            $APIHeaders.Add("Accept","application/*+json;version=$APIVersion.0")
+            $APIHeaders.Add("Accept","application/*+json;version=$APIVersion_String")
         }
     }
     if($PSBoundParameters.ContainsKey("CustomContentType")){

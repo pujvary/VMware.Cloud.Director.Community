@@ -23,8 +23,8 @@ function Get-CINSXTNetworkPools(){
 
 	.NOTES
     AUTHOR: Adrian Begg
-	LASTEDIT: 2019-12-17
-	VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     Param(
         [Parameter(Mandatory=$True)]
@@ -51,7 +51,7 @@ function Get-CINSXTNetworkPools(){
     [Hashtable] $NSXTRequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/networkPools/networkPoolSummaries?filter=(poolType==GENEVE;managingOwnerRef.id==$($NSXTManager.id))"
         Method = "Get"
-        APIVersion = 33
+        APIVersion = 37.2
         Data = $NSXTRequestArgs
     }
     $NetworkPools = ((Invoke-CICloudAPIRequest @NSXTRequestParameters).JSONData).values

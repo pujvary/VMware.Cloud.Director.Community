@@ -25,8 +25,8 @@ function New-CISAMLGroup(){
 
     .NOTES
     AUTHOR: Adrian Begg
-    LASTEDIT: 2019-12-17
-    VERSION: 1.0
+    LASTEDIT: 2023-06-20
+    VERSION: 1.1
     #>
     Param(
     [Parameter(Mandatory=$True, ParameterSetName = "System")]
@@ -54,7 +54,7 @@ function New-CISAMLGroup(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.ServiceUri)query"
         Method = "Get"
-        APIVersion = 32
+        APIVersion = 37.2
         APIType = "Legacy"
         Data = $APIParameters
     }
@@ -82,7 +82,7 @@ function New-CISAMLGroup(){
     [Hashtable] $RequestParameters = @{
         URI = "$OrgURI/groups"
         Method = "Post"
-        APIVersion = 33
+        APIVersion = 37.2
         APIType = "Legacy"
         LegacyAPIDataType = "XML"
         Data = $Payload
