@@ -57,7 +57,7 @@ function Set-CIEmailSettings(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.ServiceUri)admin/extension/settings/email"
             Method = "Get"
-            APIVersion = 37.2
+            APIVersion = "37.2"
             APIType = "Legacy"
             LegacyAPIDataType = "JSON"
         }
@@ -91,7 +91,7 @@ function Set-CIEmailSettings(){
         [Hashtable] $RequestParameters = @{
             URI = "$($Org.Href)/settings/email"
             Method = "Get"
-            APIVersion = 30
+            APIVersion = "37.2"
             APIType = "Legacy"
             LegacyAPIDataType = "XML"
         }

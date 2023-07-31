@@ -36,7 +36,7 @@ Function Get-CIBrandingPolicy{
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/branding"
         Method = "Get"
-        APIVersion = 37.2
+        APIVersion = "37.2"
     }
     # Add the tenant filter if provided
     if($PSBoundParameters.ContainsKey("Tenant")){

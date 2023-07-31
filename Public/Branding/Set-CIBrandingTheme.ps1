@@ -48,7 +48,7 @@ function Set-CIBrandingTheme(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/branding/themes/$ThemeName/contents"
         Method = "Post"
-        APIVersion = 37.2
+        APIVersion = "37.2"
         Data = ($Data | ConvertTo-Json)
     }
     $Response = (Invoke-CICloudAPIRequest @RequestParameters)
@@ -60,7 +60,7 @@ function Set-CIBrandingTheme(){
         Method = "Put"
         Headers = @{
             "x-vcloud-authorization" = $global:DefaultCIServers.SessionId
-            "Accept" = "application/json;version=33.0"
+            "Accept" = "application/json;version=37.2"
         }
         InFile = $CssFile
     }

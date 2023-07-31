@@ -50,7 +50,7 @@ function Get-CIRightsBundle(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/rightsBundles"
         Method = "Get"
-        APIVersion = 37.2
+        APIVersion = "37.2"
         Data = $APIParameters
     }
     # Next we need to determine if we need to filter the results at all - to prevent multiple API calls process subset
@@ -97,7 +97,7 @@ function Get-CIRightsBundle(){
                 [Hashtable] $RightRequestParameters = @{
                     URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/rightsBundles/$($objRightBundle.id)/rights"
                     Method = "Get"
-                    APIVersion = 37.2
+                    APIVersion = "37.2"
                     Data = $RightsAPIParameters
                 }
                 # Make the API call to retrieve all of the Rights

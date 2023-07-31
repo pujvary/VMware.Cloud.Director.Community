@@ -19,7 +19,7 @@ function Get-CISite(){
     [Hashtable] $ImportRequestParameters = @{
         URI = "$($global:DefaultCIServers.ServiceUri)site"
         Method = "Get"
-        APIVersion = 37.2
+        APIVersion = "37.2"
         APIType = "Legacy"
     }
     [xml] $LocalSiteXML = (Invoke-CICloudAPIRequest @ImportRequestParameters).RawData

@@ -54,7 +54,7 @@ function New-CIRole(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/roles"
             Method = "Post"
-            APIVersion = 37.2
+            APIVersion = "37.2"
             Data = (ConvertTo-Json $Payload -Depth 100)
         }
         # Make the API call and return the result

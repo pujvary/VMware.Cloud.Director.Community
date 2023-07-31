@@ -166,7 +166,7 @@ function Set-CISystemSettings(){
   [Hashtable] $RequestParameters = @{
     URI = "$($global:DefaultCIServers.ServiceUri)admin/extension/settings/general"
     Method = "Get"
-    APIVersion = 37.2
+    APIVersion = "37.2"
     APIType = "Legacy"
     LegacyAPIDataType = "JSON"
   }
@@ -317,7 +317,7 @@ function Set-CISystemSettings(){
     [Hashtable] $UpdateParameters = @{
       URI = "$($global:DefaultCIServers.ServiceUri)admin/extension/settings/general"
       Method = "Put"
-      APIVersion = 33
+      APIVersion = "37.2"
       APIType = "Legacy"
       LegacyAPIDataType = "JSON"
       Data = (ConvertTo-JSON $GeneralSettings -Depth 100)
@@ -348,7 +348,7 @@ function Set-CISystemSettings(){
     [Hashtable] $UpdateParameters = @{
       URI = "$($global:DefaultCIServers.ServiceUri)admin/extension/settings/operationLimitsSettings"
       Method = "Put"
-      APIVersion = 33
+      APIVersion = "37.2"
       APIType = "Legacy"
       LegacyAPIDataType = "JSON"
       Data = (ConvertTo-JSON $OperationLimitSettings -Depth 100)
@@ -380,7 +380,7 @@ function Set-CISystemSettings(){
     [Hashtable] $UpdateParameters = @{
       URI = "$($global:DefaultCIServers.ServiceUri)admin/extension/settings/cpom"
       Method = "Put"
-      APIVersion = 33
+      APIVersion = "37.2"
       APIType = "Legacy"
       LegacyAPIDataType = "JSON"
       Data = (ConvertTo-JSON $CPOMSettings -Depth 100)

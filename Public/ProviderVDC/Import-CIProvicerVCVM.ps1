@@ -67,7 +67,7 @@ function Import-CIProvicerVCVM(){
     [Hashtable] $VIVMRequestParameters = @{
         URI = "$($ProviderVC.href)/vmsList"
         Method = "Get"
-        APIVersion = 37.2
+        APIVersion = "37.2"
         APIType = "Legacy"
     }
     [xml] $VIVMXML = ((Invoke-CICloudAPIRequest @VIVMRequestParameters).RawData)
@@ -109,7 +109,7 @@ function Import-CIProvicerVCVM(){
     [Hashtable] $ImportRequestParameters = @{
         URI = $ImportURI
         Method = "Post"
-        APIVersion = 37.2
+        APIVersion = "37.2"
         APIType = "Legacy"
         CustomContentType = $ContentType
         Data = $xmlPayload

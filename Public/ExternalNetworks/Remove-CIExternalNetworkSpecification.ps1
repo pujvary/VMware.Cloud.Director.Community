@@ -88,7 +88,7 @@ function Remove-CIExternalNetworkSpecification(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/externalNetworks/$($NetworkSpecification.id)"
             Method = "Put"
-            APIVersion = 37.2
+            APIVersion = "37.2"
             Data = (ConvertTo-Json $NetworkSpecification -Depth 100)
         }
         # Make the API call and return the result

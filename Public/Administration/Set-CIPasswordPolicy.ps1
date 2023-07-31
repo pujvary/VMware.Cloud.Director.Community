@@ -52,7 +52,7 @@ function Set-CIPasswordPolicy(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.ServiceUri)admin/extension/settings/passwordPolicy"
             Method = "Get"
-            APIVersion = 37.2
+            APIVersion = "37.2"
             APIType = "Legacy"
             LegacyAPIDataType = "JSON"
         }
@@ -85,7 +85,7 @@ function Set-CIPasswordPolicy(){
         [Hashtable] $RequestParameters = @{
             URI = "$($Org.Href)/settings"
             Method = "Get"
-            APIVersion = 33
+            APIVersion = "37.2"
             APIType = "Legacy"
             LegacyAPIDataType = "JSON"
         }

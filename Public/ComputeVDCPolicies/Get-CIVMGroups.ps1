@@ -54,7 +54,7 @@ function Get-CIVMGroups(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.ServiceUri)query?filter=((clusterMoref==$($ProviderVDC.vcBackingClusterMoref));vcId==$($ProviderVDC.vimServer.id.Trim("urn:vcloud:vimserver:")))"
         Method = "Get"
-        APIVersion = 37.2
+        APIVersion = "37.2"
         APIType = "Legacy"
         Data = $APIParameters
     }

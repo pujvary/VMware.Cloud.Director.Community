@@ -40,7 +40,7 @@ function Get-CINSXTManager(){
     [Hashtable] $NSXTRequestParameters = @{
         URI = "$($global:DefaultCIServers.ServiceUri)query"
         Method = "Get"
-        APIVersion = 37.2
+        APIVersion = "37.2"
         APIType = "Legacy"
         Data = $NSXTRequestArgs
     }
@@ -56,7 +56,7 @@ function Get-CINSXTManager(){
         [Hashtable] $NSXTRequestParameters = @{
             URI = $NSXTManagerRef.href
             Method = "Get"
-            APIVersion = 37.2
+            APIVersion = "37.2"
             APIType = "Legacy"
         }
         $NSXTAPIObject = ([xml](Invoke-CICloudAPIRequest @NSXTRequestParameters).RawData).NsxTManager

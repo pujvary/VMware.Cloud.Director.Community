@@ -73,7 +73,7 @@ function Get-CIExternalNetwork(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/externalNetworks"
         Method = "Get"
-        APIVersion = 37.2
+        APIVersion = "37.2"
         Data = $APIParameters
     }
     # Make the API call and return the result

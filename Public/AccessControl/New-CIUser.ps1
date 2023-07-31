@@ -105,7 +105,7 @@ Function New-CIUser {
     [Hashtable] $RequestParameters = @{
         URI = "$OrganisationURI/users"
         Method = "Post"
-        APIVersion = 37.2
+        APIVersion = "37.2"
         APIType = "Legacy"
         LegacyAPIDataType = "JSON"
         Data = (ConvertTo-JSON $objUser -Depth 100)

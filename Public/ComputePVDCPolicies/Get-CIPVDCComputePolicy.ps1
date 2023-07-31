@@ -56,7 +56,7 @@ function Get-CIPVDCComputePolicy(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/pvdcComputePolicies"
         Method = "Get"
-        APIVersion = 33
+        APIVersion = "37.2"
         Data = $APIParameters
     }
     # Make the API call and return the result
@@ -76,7 +76,7 @@ function Get-CIPVDCComputePolicy(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/pvdcComputePolicies/$($Results.id)/vms"
             Method = "Get"
-            APIVersion = 37.2
+            APIVersion = "37.2"
         }
         $Response = (Invoke-CICloudAPIRequest @RequestParameters).JSONData
         $Results | Add-Member Note* VMAssociations $Response.values

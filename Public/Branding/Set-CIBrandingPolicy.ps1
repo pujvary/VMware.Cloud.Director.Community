@@ -82,7 +82,7 @@ Function Set-CIBrandingPolicy(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/branding"
             Method = "Put"
-            APIVersion = 37.2
+            APIVersion = "37.2"
             Data = ($BrandingPolicy | ConvertTo-Json)
         }
         # Add the tenant filter if provided

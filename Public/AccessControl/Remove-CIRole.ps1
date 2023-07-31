@@ -47,7 +47,7 @@ function Remove-CIRole(){
         [Hashtable] $RequestParameters = @{
             URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/roles/$($Role.id)"
             Method = "Delete"
-            APIVersion = 37.2
+            APIVersion = "37.2"
             Data = (ConvertTo-Json $APIParameters -Depth 100)
         }
         try{

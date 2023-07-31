@@ -142,7 +142,7 @@ function New-CIPVDC(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.ServiceUri)admin/extension/providervdcsparams"
         Method = "Post"
-        APIVersion = 37.2
+        APIVersion = "37.2"
         APIType = "Legacy"
         LegacyAPIDataType = "JSON"
         Data = (ConvertTo-JSON $ProviderVDCParams -Depth 100)

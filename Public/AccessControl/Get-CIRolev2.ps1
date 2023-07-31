@@ -54,7 +54,7 @@ function Get-CIRolev2(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/roles"
         Method = "Get"
-        APIVersion = 37.2
+        APIVersion = "37.2"
         Data = (ConvertTo-Json $APIParameters -Depth 100)
     }
     if($PSBoundParameters.ContainsKey('Id')){
@@ -100,7 +100,7 @@ function Get-CIRolev2(){
                 [Hashtable] $RightRequestParameters = @{
                     URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/roles/$($objRoles.id)/rights"
                     Method = "Get"
-                    APIVersion = 37.2
+                    APIVersion = "37.2"
                     Data = $RightsAPIParameters
                 }
                 # Make the API call to retrieve all of the Rights

@@ -72,7 +72,7 @@ function New-CIPVDCComputePolicy(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/1.0.0/pvdcComputePolicies"
         Method = "Post"
-        APIVersion = 37.2
+        APIVersion = "37.2"
         Data = (ConvertTo-JSON $Data -Depth 100)
     }
     # Make the API call and return the result

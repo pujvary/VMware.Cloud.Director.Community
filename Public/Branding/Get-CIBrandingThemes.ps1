@@ -29,7 +29,7 @@ Function Get-CIBrandingThemes(){
     [Hashtable] $RequestParameters = @{
         URI = "$($global:DefaultCIServers.CloudAPIServiceURI)/branding/themes"
         Method = "Get"
-        APIVersion = 37.2
+        APIVersion = "37.2"
     }
     # Make the API call and return the result
     $Response = (Invoke-CICloudAPIRequest @RequestParameters).JSONData
